@@ -16,8 +16,13 @@ author: Fernando Adolfo
 navbar-links:
   About Me: "Estoy en la etapa más dificil de mi vida"
   Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
+    - Arquitectura de Computadoras: "https://beautifuljekyll.com"
+    - Auditoria Informatica: "https://www.markdowntutorial.com/"
+    - Programacion en Ambiente Cliente-Servidor: "https://beautifuljekyll.com"
+    - Topicos de Bases de Datos: "https://www.markdowntutorial.com/"
+    - Interconectividad de Redes: "https://beautifuljekyll.com"
+    - Ingles IV: "https://www.markdowntutorial.com/"
+    - Seguridad Informatica: "https://www.markdowntutorial.com/"
   Author's home: "https://deanattali.com"
 
 # --- Logo --- #
@@ -41,7 +46,7 @@ round-avatar: true
 social-network-links:
   email: "someone@example.com"
   facebook: deanattali
-  github: daattali
+  github: https://github.com/Ferthronix224
   twitter: daattali
   patreon: DeanAttali
   youtube: c/daattali
