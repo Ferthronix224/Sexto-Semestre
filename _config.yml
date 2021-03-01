@@ -14,7 +14,6 @@ author: Fernando Adolfo
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  Acerca de mi: "aboutme"
   Materias:
     - Arquitectura de Computadoras: "https://beautifuljekyll.com"
     - Auditoria Informatica: "https://www.markdowntutorial.com/"
@@ -23,7 +22,7 @@ navbar-links:
     - Interconectividad de Redes: "https://beautifuljekyll.com"
     - Ingles IV: "https://www.markdowntutorial.com/"
     - Seguridad Informatica: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  Acerca de mi: "aboutme"
 
 # --- Logo --- #
 
