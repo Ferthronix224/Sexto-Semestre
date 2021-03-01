@@ -6,7 +6,7 @@
 # --- Required options --- #
 
 # Name of website
-title: Topicos de Bases de Datos
+title: Sexto Semestre
 
 # Your name to show in the footer
 author: Fernando Adolfo
@@ -14,7 +14,7 @@ author: Fernando Adolfo
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  About Me: "Estoy en la etapa más dificil de mi vida"
+  About Me: ""
   Resources:
     - Arquitectura de Computadoras: "https://beautifuljekyll.com"
     - Auditoria Informatica: "https://www.markdowntutorial.com/"
@@ -29,7 +29,7 @@ navbar-links:
 
 # Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/assets/img/avatar-icon.png"
+avatar: "/assets/img/wolf.png"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
 round-avatar: true
