@@ -6,15 +6,15 @@
 # --- Required options --- #
 
 # Name of website
-title: My Website
+title: Topicos de Bases de Datos
 
 # Your name to show in the footer
-author: Some Person
+author: Fernando Adolfo
 
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  About Me: "aboutme"
+  About Me: "Estoy en la etapa más dificil de mi vida"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
