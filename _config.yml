@@ -14,7 +14,7 @@ author: Fernando Adolfo
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  Acerca de mi: ""
+  Acerca de mi: "aboutme"
   Materias:
     - Arquitectura de Computadoras: "https://beautifuljekyll.com"
     - Auditoria Informatica: "https://www.markdowntutorial.com/"
@@ -44,12 +44,12 @@ round-avatar: true
 # Select the social network links that you want to show in the footer.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "someone@example.com"
-  facebook: deanattali
+  email: "lrs18110089@purisima.tecnm.mx"
+  facebook: profile.php?id=100005930595715
   github: Ferthronix224
-  twitter: daattali
+  twitter: ferthronix
 # patreon: DeanAttali
-  youtube: c/daattali
+  youtube: c/UCnhv6MIHp8b2aUHOEDaxixQ
 #  medium: yourname
 #  reddit: yourname
 #  linkedin: daattali
