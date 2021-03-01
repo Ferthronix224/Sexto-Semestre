@@ -14,8 +14,8 @@ author: Fernando Adolfo
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  About Me: ""
-  Resources:
+  Acerca de mi: ""
+  Materias:
     - Arquitectura de Computadoras: "https://beautifuljekyll.com"
     - Auditoria Informatica: "https://www.markdowntutorial.com/"
     - Programacion en Ambiente Cliente-Servidor: "https://beautifuljekyll.com"
