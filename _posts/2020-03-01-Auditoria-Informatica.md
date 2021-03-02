@@ -3,7 +3,7 @@ layout: post
 title: Auditoria Informatica
 subtitle: Mejorando el estudio
 cover-img: /assets/img/auditoria.jpg
-thumbnail-img: /assets/img/datos.jpg
+thumbnail-img: /assets/img/audit.png
 share-img: /assets/img/auditoria.jpg
 gh-repo: daattali/beautiful-jekyll
 gh-badge: [star, fork, follow]
