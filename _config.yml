@@ -15,13 +15,13 @@ author: Fernando Adolfo
 
 navbar-links:
   Materias:
-    - Arquitectura de Computadoras: "https://beautifuljekyll.com"
-    - Auditoria Informatica: "https://www.markdowntutorial.com/"
-    - Programacion en Ambiente Cliente-Servidor: "https://beautifuljekyll.com"
-    - Topicos de Bases de Datos: "https://www.markdowntutorial.com/"
-    - Interconectividad de Redes: "https://beautifuljekyll.com"
-    - Ingles IV: "https://www.markdowntutorial.com/"
-    - Seguridad Informatica: "https://www.markdowntutorial.com/"
+    - Arquitectura de Computadoras: "2020-03-01-Arquitectura-de-Computadoras"
+    - Auditoria Informatica: "2020-03-01-Auditoria-Informatica"
+    - Programacion en Ambiente Cliente-Servidor: "h2020-03-01-Programacion-Cliente-Servidor"
+    - Topicos de Bases de Datos: "2020-03-01-Base-de-Datos.md"
+    - Interconectividad de Redes: "2020-03-01-Interconectividad-Redes"
+    - Ingles IV: "2020-03-01-Ingles-IV"
+    - Seguridad Informatica: "2020-03-01-Seguridad-Informatica"
   Acerca de mi: "aboutme"
 
 # --- Logo --- #
