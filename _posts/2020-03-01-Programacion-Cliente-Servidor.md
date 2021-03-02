@@ -2,9 +2,9 @@
 layout: post
 title: Programacion en Ambiente Cliente-Servidor
 subtitle: Mejorando el estudio
-cover-img: /assets/img/bases.jpg
+cover-img: /assets/img/programacion.jpg
 thumbnail-img: /assets/img/datos.jpg
-share-img: /assets/img/bases.jpg
+share-img: /assets/img/programacion.jpg
 gh-repo: daattali/beautiful-jekyll
 gh-badge: [star, fork, follow]
 tags: [test]
