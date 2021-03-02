@@ -19,13 +19,13 @@ comments: true
 # Politicas del curso
 
 Las y los integrantes del grupo, manifestamos que el docente nos presentó la siguiente información:
-  -Programa de estudios de la asignatura.
-    -Caracterización de la asignatura.
-    -Competencias previas.
-    -Copetencias específicas y genéricas a desarrollar.
-    -Temas para desarrollar las competencias.
-    -Actividades de enseñanza y aprendizaje.
-    -Prácticas.
-    -Proyecto de asignatura.
-    -Estrategias y criterios de evaluación (indicadores).
-    -Fuentes de información.
+-Programa de estudios de la asignatura.
+  -Caracterización de la asignatura.
+  -Competencias previas.
+  -Copetencias específicas y genéricas a desarrollar.
+  -Temas para desarrollar las competencias.
+  -Actividades de enseñanza y aprendizaje.
+  -Prácticas.
+  -Proyecto de asignatura.
+  -Estrategias y criterios de evaluación (indicadores).
+  -Fuentes de información.
