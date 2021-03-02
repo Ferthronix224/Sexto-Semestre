@@ -3,7 +3,7 @@ layout: post
 title: Topicos de Bases de Datos
 subtitle: Mejorando el estudio
 cover-img: /assets/img/bases.jpg
-thumbnail-img: /assets/img/datos.jpg
+thumbnail-img: /assets/img/data.png
 share-img: /assets/img/bases.jpg
 gh-repo: daattali/beautiful-jekyll
 gh-badge: [star, fork, follow]
