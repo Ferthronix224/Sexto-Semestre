@@ -15,6 +15,8 @@ comments: true
 
 
 - [Politicas del curso](#politicas-del-curso)
+- [¿Que es una auditoria?](#¿que-es-una-auditoria?)
+- [Objetivo](#objetivo)
 
 # Politicas del curso
 
@@ -66,3 +68,18 @@ En caso de reprobar el indicador de proyecto la profesora determinará en segund
 - La persona que no asista a la exposición ya no podrá reasignarse fecha de exposición por ningún motivo.
 - La información a exponer deberá ser presentada con anticipación a la profesora para su revisión.
 - Situaciones o casos no previstos en estas políticas se revisarán en su momento.
+
+# ¿Que es una auditoria?
+**Una auditoría, en el contexto de la economía y el mundo empresarial, es el proceso de evaluación minuciosa de una sociedad u organización con el ánimo de conocer sus características específicas, así como sus fortalezas y debilidades.**
+
+Por medio de trabajos de auditoría, es posible llevara cabo valoraciones de todo tipo atendiendo a criterios de análisis y medición exhaustivos.
+
+Principalmente, una auditoría persigue localizar aspectos relacionados con la rentabilidad o la eficiencia en los diferentes departamentos o delegaciones corporativas que conforman una empresa. 
+
+Del mismo modo ocurre con otros conglomerados como fundaciones, ONGs e incluso instituciones y administraciones públicas. 
+
+# Objetivo
+El objetivo es conocer y aplicar ciertas herramientas computacionales para optimizar los procesos dentro de las organizaciones .
+Desempeña profesionalmente con etica respetando un marco legal la pluralidad y a conservacion del medio ambiente.
+
+
