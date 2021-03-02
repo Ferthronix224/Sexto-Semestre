@@ -16,7 +16,7 @@ comments: true
 
 - [Politicas del curso](#politicas-del-curso)
 - [¿Que es una auditoria?](#Que-es-una-auditoria)
-- [Objetivo](#objetivo)
+- [Objetivos](#objetivos)
 
 # Politicas del curso
 
@@ -78,8 +78,8 @@ Principalmente, una auditoría persigue localizar aspectos relacionados con la r
 
 Del mismo modo ocurre con otros conglomerados como fundaciones, ONGs e incluso instituciones y administraciones públicas. 
 
-# Objetivo
-El objetivo es conocer y aplicar ciertas herramientas computacionales para optimizar los procesos dentro de las organizaciones .
-Desempeña profesionalmente con etica respetando un marco legal la pluralidad y a conservacion del medio ambiente.
+# Objetivos
+- Es conocer y aplicar ciertas herramientas computacionales para optimizar los procesos dentro de las organizaciones.
+- Desempeña profesionalmente con etica respetando un marco legal la pluralidad y a conservacion del medio ambiente.
 
 
