@@ -42,7 +42,7 @@ Estamos de acuerdo con el siguiente reglamento interno: (cada docente define su 
 - No existe retardos la entrada será estrictamente a la hora de clase, por lo que iniciando la clase se pasará lista y los estudiantes que lleguen después del pase de lista tendrán falta.
 - No existen justificantes de faltas, ya que el estudiante tiene un 20% del total de asistencias para faltar, por lo que deberá administrar sus faltas para utilizarlas.
 - El alumno tendrá que cubrir un 80% de asistencia durante el semestre para poder acreditar la materia, en caso de no cumplirlo automáticamente tendrá que repetir la materia.
-- EL pase de lista será 10 minutos después de la hora de entrada.
+- El pase de lista será 10 minutos después de la hora de entrada.
 
 **Tareas**
 - Las tareas deberán subirse a la asignación de la tarea, en la fecha establecida por la profesora, de lo contrario se cerrará la fecha de la actividad y no podrán subirla en fechas posteriores, por lo que tendrá cero en la calificación de dicha tarea.
