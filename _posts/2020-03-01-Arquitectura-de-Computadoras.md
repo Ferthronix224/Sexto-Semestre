@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Topicos de Bases de Datos
+title: Arquitectura de Computadoras
 subtitle: Mejorando el estudio
 cover-img: /assets/img/bases.jpg
 thumbnail-img: /assets/img/datos.jpg
