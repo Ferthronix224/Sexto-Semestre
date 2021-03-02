@@ -15,7 +15,7 @@ comments: true
 
 
 - [Politicas del curso](#politicas-del-curso)
-- [¿Que es una auditoria?](#¿-que-es-una-auditoria-?)
+- [¿Que es una auditoria?](#¿Que-es-una-auditoria?)
 - [Objetivo](#objetivo)
 
 # Politicas del curso
