@@ -17,6 +17,7 @@ comments: true
 - [Politicas del curso](#politicas-del-curso)
 - [¿Que es una auditoria?](#Que-es-una-auditoria)
 - [Objetivos](#objetivos)
+- [Indicadores](#indicadores)
 
 # Politicas del curso
 
@@ -82,4 +83,8 @@ Del mismo modo ocurre con otros conglomerados como fundaciones, ONGs e incluso i
 - Es conocer y aplicar ciertas herramientas computacionales para optimizar los procesos dentro de las organizaciones.
 - Desempeña profesionalmente con etica respetando un marco legal la pluralidad y a conservacion del medio ambiente.
 
-
+# Indicadores
+- Proyecto 35%
+- Trabajos 30%
+- Examen Escrito 25%
+- Exposición 10%
