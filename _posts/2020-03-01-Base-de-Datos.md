@@ -15,15 +15,15 @@ comments: true
 
 
 - [CRUD](#crud)
-- [DML (Data Manipulation Languaje)](#data)
+- [DML (Data Manipulation Languaje)](#dml-data-manipulation-languaje)
 - [Create](#create)
 - [Insert](#insert)
 - [Update](#update)
 - [Delete](#delete)
 - [Select](#select)
-- [DDL (Data Definition Languaje)](#ddl)
+- [DDL (Data Definition Languaje)](#ddl-data-definition-languaje)
 - [Drop](#drop)
-- [DCL (Data Control Languaje)](#dcl)
+- [DCL (Data Control Languaje)](#dcl-data-control-languaje)
 - [Grant](#grant)
 - [Revoke](#revoke)
 - [Procedimientos Almacenados](#procedimientos-almacenados)
