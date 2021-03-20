@@ -26,7 +26,7 @@ comments: true
 - [DCL (Data Control Languaje)](#dcl)
 - [Grant](#grant)
 - [Revoke](#revoke)
-- [Procedimientos Almacenados](#procedimientos)
+- [Procedimientos Almacenados](#procedimientos-almacenados)
 
 ## CRUD
 
