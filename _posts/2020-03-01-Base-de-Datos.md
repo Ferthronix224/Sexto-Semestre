@@ -71,9 +71,9 @@ Comando que se utiliza cuando es necesario eliminar permamentemente  uno o mas r
 
 **Sintaxis**
 {% highlight sql linenos %}
-INSERT INTO table_name VALUES(p1, p2, p3)
-INSERT INTO table_name(c1, c2) VALUES(p1, p3)
-INSERT INTO Alumnos(nombre, edad) VALUES('chinito',23)
+DELETE FROM Prueba
+
+DELETE FROM Prueba Where id = 6
 {% endhighlight %}
 ## Select
 Es quizá el comando más conocido de SQL ya que se utiliza para extraer o consultarla información contenida en la base datos. Es por mucho, el comando más complejo por las variedades de uso y pòr tanto por las multiples variaciones que puede tener. En un comando SELECT se pueden:
