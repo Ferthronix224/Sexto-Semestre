@@ -130,5 +130,22 @@ DROP TABLE Prueba
 DROP DATABASE Ferthronix
 {% endhighlight %}
 ## DCL (Data Control Languaje)
+
+No cualquiera puede acceder a la base de datos, y de los usuarios que pueden ver la base de datos, no todos deberían tener los mismos privilegios para ver o modificar la información. El Lenguaje de COntrol de Datos o DCL aglomera a los comandos que se utilizan en las bases de datos relacionales para otorgar o quitar permisos a los usuarios.
+
+Los permisos que se pueden otorgar a los usuarios son de dos tipos principalmente:
+
+- Permisos de sistema: Incluyen permisos para crear sesiones, crear estructuras (comandos DDL) o incluso ejecutar código contenido dentro de la base de datos.
+- Permisos sobre objetos: Son aquellos permisos que dejan a los usuarios ver información  p incluso modificarla.
+
+Las buenas prácticas de seguridad de bases de datos implementadas con ayuda de los administradores de bases de datos o DBAs deben incluir la definición de diversos usuarios, que tengan diversos privilegios, de tal manera que cada usuario solo vea los datos qque requiere y nunca se exponga la información  a usuarios que no sean los permitidos.
+
+Para implementar los permisos o privilegios en la base de datos se utilizan dos comandos, **GRANT** y **REVOKE**. 
 ## Grant
+
+Es el comando de DCL para otorgar o dar permisos a un usuario de algo en particular (permisos de sistema o sobre objetos). Obviamente, para dar permisos, el usuario que los otorga debe tener, a su vez, permisos para dar permisos. Es por ello que estas actividades están restringidas casi siempre a los DBAs en las organizaciones.
 ## Revoke
+
+Es el complemento del comando GRANT, ya que el comando REVOKE elimina o quita privilegios al usuario de que se trate en el comando.
+
+Al igual que el comando anterior, para poder quitar permisos a un usuario, el usuario que ejecute REVOKE deberá tener privilegios para hacerlo.
