@@ -26,6 +26,7 @@ comments: true
 - [DCL (Data Control Languaje)](#dcl)
 - [Grant](#grant)
 - [Revoke](#revoke)
+- [Procedimientos Almacenados](#procedimientos)
 
 ## CRUD
 
@@ -151,3 +152,125 @@ Es el comando de DCL para otorgar o dar permisos a un usuario de algo en particu
 Es el complemento del comando GRANT, ya que el comando REVOKE elimina o quita privilegios al usuario de que se trate en el comando.
 
 Al igual que el comando anterior, para poder quitar permisos a un usuario, el usuario que ejecute REVOKE deberá tener privilegios para hacerlo.
+
+## Procedimientos Almacenados
+
+**Sintaxis de un procedimiento almacenado de Add**
+{% highlight sql linenos %}
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_clientes_add
+(
+@nombre NVARCHAR(50),
+@razonSocial NVARCHAR(100),
+@telefono NVARCHAR(20),
+@descuento DECIMAL(6,2)
+)
+AS
+BEGIN
+
+INSERT INTO [dbo].[Clientes]
+           ([nombre]
+           ,[razonSocial]
+           ,[telefono]
+           ,[descuento]
+           ,[activo])
+     VALUES
+           (@nombre,
+		    @razonSocial,
+		    @telefono,
+		    @descuento,
+		    1)
+
+END
+{% endhighlight %}
+
+**Sintaxis de un procedimiento almacenado de Update**
+{% highlight sql linenos %}
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_clientes_update
+(
+@idCliente INT,
+@nombre NVARCHAR(50),
+@razonSocial NVARCHAR(100),
+@telefono NVARCHAR(20),
+@descuento DECIMAL(2,0)
+)
+AS
+BEGIN
+
+UPDATE [dbo].[Clientes]
+   SET [nombre] = @nombre
+      ,[razonSocial] = @razonSocial
+      ,[telefono] = @telefono
+      ,[descuento] = @descuento
+ WHERE idCliente = @idCliente
+
+END
+{% endhighlight %}
+
+**Sintaxis de un procedimiento almacenado de GetById**
+{% highlight sql linenos %}
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_clientes_getbyid
+(
+@idCliente INT
+)
+AS
+BEGIN
+
+SELECT [idCliente]
+      ,[nombre]
+      ,[razonSocial]
+      ,[telefono]
+      ,[descuento]
+      ,[activo]
+  FROM [dbo].[Clientes]
+  WHERE idCliente = @idCliente
+
+END
+{% endhighlight %}
+
+**Sintaxis de un procedimiento almacenado de GetAll**
+{% highlight sql linenos %}
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_clientes_getall
+AS
+BEGIN
+
+SELECT [idCliente]
+      ,[nombre]
+      ,[razonSocial]
+      ,[telefono]
+      ,[descuento]
+      ,[activo]
+  FROM [dbo].[Clientes]
+
+END
+{% endhighlight %}
+
+**Sintaxis de un procedimiento almacenado de Delete**
+{% highlight sql linenos %}
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_clientes_delete
+(
+@idCliente INT
+)
+AS
+BEGIN
+
+UPDATE [dbo].[Clientes]
+   SET activo = 0
+ WHERE idCliente = @idCliente
+
+END
+{% endhighlight %}
