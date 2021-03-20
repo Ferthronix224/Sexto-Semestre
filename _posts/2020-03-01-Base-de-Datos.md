@@ -37,6 +37,8 @@ DML es el conjunto de comandos de SQL que permite ingresar, modificar y consulta
 - Update: Modifica registros.  
 - Delete: Elimina registros.  
 - Select: Consulta o extrae información de la base de datos.  
+
+
 ## Create 
 
 La sentencia CREATE DATABASE se utiliza para crear bases de datos.
