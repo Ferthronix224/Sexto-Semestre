@@ -91,9 +91,9 @@ La lista puede seguir, pero esos son sólo algunas funcionalidades que se pueden
 
 **Sintaxis**
 {% highlight sql linenos %}
-INSERT INTO table_name VALUES(p1, p2, p3)
-INSERT INTO table_name(c1, c2) VALUES(p1, p3)
-INSERT INTO Alumnos(nombre, edad) VALUES('chinito',23)
+SELECT * FROM Prueba
+
+SELECT nombre, edad FROM Prueba
 {% endhighlight %}
 ## DDL (Data Definition Languaje)
 ## Drop
