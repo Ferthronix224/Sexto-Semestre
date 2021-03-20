@@ -40,6 +40,9 @@ DML es el conjunto de comandos de SQL que permite ingresar, modificar y consulta
 ## Create 
 ## Insert
 
+Es el comando utilizado para añadir registros en una tabla o en una vista. En su forma más simple añade un registro a una tabla, pero pueden añadirse más de un registro si se proporcionan los datos necesarios para varios regustros o se anida la salida de una consulta de una tabla como entrada del comando INSERT para añadir varios registros a la vez.
+
+Al momento de realizar la inserción del nuevo registro, la base de datos verifica si los datos cumolen con todas las restricciones de la base de datos y si cumple con la integridad referencial impuesta en la estructura de la base de datos.
 **Sintaxis**
 {% highlight sql linenos %}
 INSERT INTO table_name VALUES(p1, p2, p3)
@@ -48,8 +51,46 @@ INSERT INTO Alumnos(nombre, edad) VALUES('chinito',23)
 {% endhighlight %}
 
 ## Update
+
+Update
+Es el comando que permite modificar la información en uno o más registros de una tabla. Es capaz de modificar varios registros y varios campos a la vez.
+
+Al igual que con los demas comandos de DML, la base de datos al querer hacer una modificacion a los datos, verifica que la integridad referencial se mantenga y que todas las restricciones establecidas se sigan cumpliendo.
+**Sintaxis**
+{% highlight sql linenos %}
+INSERT INTO table_name VALUES(p1, p2, p3)
+INSERT INTO table_name(c1, c2) VALUES(p1, p3)
+INSERT INTO Alumnos(nombre, edad) VALUES('chinito',23)
+{% endhighlight %}
 ## Delete
+Comando que se utiliza cuando es necesario eliminar permamentemente  uno o mas registros de una tabla. Si bien en ocasiones, no es recomendable eliminar fisicamente los registros (sino lógicamente) el comando DELETE permite hacer la eliminación física (siempre y cuando esto no contradiga las restricciones o integridad de la base de datos).
+
+**Sintaxis**
+{% highlight sql linenos %}
+INSERT INTO table_name VALUES(p1, p2, p3)
+INSERT INTO table_name(c1, c2) VALUES(p1, p3)
+INSERT INTO Alumnos(nombre, edad) VALUES('chinito',23)
+{% endhighlight %}
 ## Select
+Es quizá el comando más conocido de SQL ya que se utiliza para extraer o consultarla información contenida en la base datos. Es por mucho, el comando más complejo por las variedades de uso y pòr tanto por las multiples variaciones que puede tener. En un comando SELECT se pueden:
+
+- Consultar una o varias tablas.
+- Consultar una o varias vistas.
+- Ejecutar funciones creadas por el usuario y de llas interconstruidas en la base de datos.
+- Extraer informacion de otras bases de datos.
+- Filtrar registros o columnas.
+- Agrupar registros.
+- Ser entrada para otros comandos.
+- Unir diversos comandos SELECT.
+
+La lista puede seguir, pero esos son sólo algunas funcionalidades que se pueden realizar con el comando SELECT.
+
+**Sintaxis**
+{% highlight sql linenos %}
+INSERT INTO table_name VALUES(p1, p2, p3)
+INSERT INTO table_name(c1, c2) VALUES(p1, p3)
+INSERT INTO Alumnos(nombre, edad) VALUES('chinito',23)
+{% endhighlight %}
 ## DDL (Data Definition Languaje)
 ## Drop
 ## DCL (Data Control Languaje)
