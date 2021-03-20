@@ -123,6 +123,7 @@ Las principales funcionalidades de SQL como lenguaje de definición (DDL) son la
 - SHOW TABLES: mostrar tablas  
 - DROP TABLE<nombre de tabla>: Borrar tabla  
 - DESCRIBE <nombre de tabla> Mostrar estructura de una tabla  
+
 ## Drop
    
 La sentencia DROP se utiliza para borrar definitivamente un índice, tabla o base de datos.
