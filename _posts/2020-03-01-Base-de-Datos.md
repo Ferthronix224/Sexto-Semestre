@@ -58,9 +58,13 @@ Es el comando que permite modificar la información en uno o más registros de u
 Al igual que con los demas comandos de DML, la base de datos al querer hacer una modificacion a los datos, verifica que la integridad referencial se mantenga y que todas las restricciones establecidas se sigan cumpliendo.
 **Sintaxis**
 {% highlight sql linenos %}
-INSERT INTO table_name VALUES(p1, p2, p3)
-INSERT INTO table_name(c1, c2) VALUES(p1, p3)
-INSERT INTO Alumnos(nombre, edad) VALUES('chinito',23)
+UPDATE Prueba
+   SET nombre = 'Smith'
+ WHERE id = 2
+ 
+ UPDATE Prueba
+   SET nombre = 'Smith', telefono = 7341285599, edad = 24
+ WHERE id = 2
 {% endhighlight %}
 ## Delete
 Comando que se utiliza cuando es necesario eliminar permamentemente  uno o mas registros de una tabla. Si bien en ocasiones, no es recomendable eliminar fisicamente los registros (sino lógicamente) el comando DELETE permite hacer la eliminación física (siempre y cuando esto no contradiga las restricciones o integridad de la base de datos).
