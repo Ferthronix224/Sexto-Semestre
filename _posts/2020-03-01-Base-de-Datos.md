@@ -96,6 +96,15 @@ SELECT * FROM Prueba
 SELECT nombre, edad FROM Prueba
 {% endhighlight %}
 ## DDL (Data Definition Languaje)
+
+Un lenguaje de definición de datos (Data Definition Language, DDL por sus siglas en inglés) es un lenguaje proporcionado por el sistema de gestión de base de datos que permite a los usuarios de la misma llevar a cabo las tareas de definición de las estructuras que almacenarán los datos así como de los procedimientos o funciones que permitan consultarlos.
+
+Las principales funcionalidades de SQL como lenguaje de definición (DDL) son la creación, modificación y borrado de las tablas que componen la base de datos, así como de los índices, vistas, sinónimos, permisos, etc. que pudieran definirse sobre las mismas. Este documento introduce los comandos para el trabajo básico con tablas.
+
+- CREATE TABLE: Crear una tabla  
+- SHOW TABLES: mostrar tablas  
+- DROP TABLE<nombre de tabla>: Borrar tabla  
+- DESCRIBE <nombre de tabla> Mostrar estructura de una tabla  
 ## Drop
 ## DCL (Data Control Languaje)
 ## Grant
