@@ -38,6 +38,21 @@ DML es el conjunto de comandos de SQL que permite ingresar, modificar y consulta
 - Delete: Elimina registros.  
 - Select: Consulta o extrae información de la base de datos.  
 ## Create 
+
+La sentencia CREATE DATABASE se utiliza para crear bases de datos.
+{% highlight sql linenos %}
+CREATE DATABASE Ferthronix
+{% endhighlight %}
+
+La sentencia CREATE TABLE se utiliza para crear una tabla en una base de datos existente.
+{% highlight sql linenos %}
+CREATE TABLE numerikis
+(
+id int,
+edad int,
+numeros int,
+)
+{% endhighlight %}
 ## Insert
 
 Es el comando utilizado para añadir registros en una tabla o en una vista. En su forma más simple añade un registro a una tabla, pero pueden añadirse más de un registro si se proporcionan los datos necesarios para varios regustros o se anida la salida de una consulta de una tabla como entrada del comando INSERT para añadir varios registros a la vez.
@@ -106,6 +121,14 @@ Las principales funcionalidades de SQL como lenguaje de definición (DDL) son la
 - DROP TABLE<nombre de tabla>: Borrar tabla  
 - DESCRIBE <nombre de tabla> Mostrar estructura de una tabla  
 ## Drop
+   
+La sentencia DROP se utiliza para borrar definitivamente un índice, tabla o base de datos.
+**Sintaxis**
+{% highlight sql linenos %}
+DROP TABLE Prueba
+
+DROP DATABASE Ferthronix
+{% endhighlight %}
 ## DCL (Data Control Languaje)
 ## Grant
 ## Revoke
