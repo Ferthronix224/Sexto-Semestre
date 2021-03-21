@@ -27,6 +27,7 @@ comments: true
 - [Grant](#grant)
 - [Revoke](#revoke)
 - [Procedimientos Almacenados](#procedimientos-almacenados)
+- [Tareas](#tareas)
 
 ## CRUD
 
@@ -274,4 +275,52 @@ UPDATE [dbo].[Clientes]
  WHERE idCliente = @idCliente
 
 END
+{% endhighlight %}
+
+## Tareas
+
+{% highlight sql linenos %}
+SELECT * FROM Products WHERE UnitsInStock < 30 AND Discontinued = 0 AND ProductName LIKE '%c%'
+{% endhighlight %}
+
+{% highlight sql linenos %}
+SELECT DISTINCT ShipCity FROM Orders
+{% endhighlight %}
+
+{% highlight sql linenos %}
+--Actividad 3 Obtener el listado de clientes (nombre), a los cuales se les enviaron productos con descuento 
+
+SELECT DISTINCT CompanyName FROM Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+INNER JOIN [Order Details] ON Orders.OrderID = [Order Details].OrderID WHERE Discount > 0
+
+--Actividad 4 Obtener el listado de clientes (nombre), a los cuales se les enviaron productos provenientes de canada y que la paqueteria
+-- sea "Federal Shipping" 
+
+SELECT DISTINCT Customers.CompanyName FROM Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID INNER JOIN Shippers 
+ON Orders.ShipVia = Shippers.ShipperID WHERE ShipCountry = 'Canada' AND ShipVia = 3
+{% endhighlight %}
+
+{% highlight sql linenos %}
+--ACTIVIDAD CURSORES mostrar en pantalla, el listado de nombres de clientes 
+--involucrados en ordenes hechas a Le France en la ventana de Mensajes NO EN RESULTADOS 
+
+DECLARE @cliente AS NVARCHAR(50)
+DECLARE @miCursorsito AS CURSOR
+SET @miCursorsito = CURSOR FOR
+					SELECT DISTINCT ContactName FROM Customers INNER JOIN Orders
+					ON Customers.CustomerID = Orders.CustomerID WHERE ShipCountry = 'France'
+OPEN @miCursorsito
+FETCH NEXT FROM @miCursorsito INTO @cliente
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	PRINT @cliente
+
+	FETCH NEXT FROM @miCursorsito INTO @cliente
+
+END
+
+--SELECT DISTINCT ContactName FROM Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID WHERE ShipCountry = 'France'
+
+--SELECT * FROM Employees
 {% endhighlight %}
