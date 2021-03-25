@@ -86,15 +86,6 @@ A) necesitan la fuente de energía para mantener la información.
 5.- ¿Qué significa DMA?  
 C) Direct Memory Access  
 
-5.- ¿Qué significa DMA?  
-C) Direct Memory Access  
-
-6.- El contenido sólo dura un corto período de tiempo, por lo que es necesario refrescarlo  
-B) Memorias dinámicas  
-
-5.- ¿Qué significa DMA?   
-C) Direct Memory Access  
-
 6.- El contenido sólo dura un corto período de tiempo, por lo que es necesario refrescarlo  
 B) Memorias dinámicas  
 
