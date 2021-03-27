@@ -319,8 +319,4 @@ BEGIN
 	FETCH NEXT FROM @miCursorsito INTO @cliente
 
 END
-
---SELECT DISTINCT ContactName FROM Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID WHERE ShipCountry = 'France'
-
---SELECT * FROM Employees
 {% endhighlight %}
