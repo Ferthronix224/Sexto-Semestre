@@ -28,6 +28,7 @@ comments: true
 - [Revoke](#revoke)
 - [Procedimientos Almacenados](#procedimientos-almacenados)
 - [Tareas](#tareas)
+- [Proyecto](#proyecto)
 
 ## CRUD
 
@@ -319,4 +320,213 @@ BEGIN
 	FETCH NEXT FROM @miCursorsito INTO @cliente
 
 END
+{% endhighlight %}
+
+## Proyecto
+
+{% highlight sql linenos %}
+--1.- Listado de clientes
+SELECT CompanyName FROM Customers
+--2.- Listado de productos descontinuados
+SELECT ProductName FROM Products WHERE Discontinued = 1
+--3.- Listado de productos ordenados por categoria
+SELECT ProductName FROM Products ORDER BY CategoryID
+SELECT * FROM Products
+--4.- Listado de empleados ordenados por nombre de forma descendente
+SELECT FirstName FROM Employees ORDER BY FirstName DESC
+--5.- Listado de empleados de la region 'Southern'
+SELECT  FirstName FROM Employees
+INNER JOIN EmployeeTerritories ON Employees.EmployeeID=EmployeeTerritories.EmployeeID
+INNER JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID
+INNER JOIN Region ON Territories.RegionID = Region.RegionID
+WHERE Region.RegionDescription = 'Southern'
+--(Dudas)6.- Listado de productos vendidos el anio 1996, sin duplicados
+SELECT DISTINCT ProductName, OrderDate FROM Products INNER JOIN [Order Details] ON 
+Products.ProductID = [Order Details].ProductID INNER JOIN Orders
+ON [Order Details].OrderID = Orders.OrderID WHERE OrderDate >= '19960101' AND OrderDate <= '19961231'
+--7.- Listado de productos vendidos, siempre y cuando el empleado sea de la region 'Western'
+SELECT ProductName FROM Products
+INNER JOIN [Order Details] ON Products.ProductID=[Order Details].ProductID
+INNER JOIN Orders ON [Order Details].OrderID = Orders.OrderID
+INNER JOIN Employees ON orders.EmployeeID = Employees.EmployeeID
+INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
+INNER JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID
+INNER JOIN Region ON Territories.RegionID =Region.RegionID
+WHERE Region.RegionDescription = 'Western'
+--8.- Top 10 de productos vendidos (sin duplicados)
+SELECT DISTINCT TOP 10 ProductName , SUM([Order Details].Quantity) AS cant FROM Products 
+INNER JOIN [Order Details] ON Products.ProductID =[Order Details].ProductID
+GROUP BY ProductName ORDER BY SUM (Quantity) DESC
+--9.- Top 5 de empleados vendedores
+SELECT TOP 5 Employees.FirstName,  SUM([Order Details].Quantity) AS cant FROM Employees
+INNER JOIN Orders ON Employees.EmployeeID=Orders.EmployeeID
+INNER JOIN [Order Details] ON Orders.OrderID= [Order Details].OrderID
+GROUP BY FirstName ORDER BY SUM (Quantity) DESC
+--10.- Top 5 de clientes
+SELECT TOP 5 ContactName, SUM([Order Details].Quantity) AS compras FROM Customers 
+INNER JOIN Orders ON Customers.CustomerID = orders.CustomerID
+INNER JOIN [Order Details] ON Orders.OrderID=[Order Details].OrderID 
+GROUP BY ContactName ORDER BY SUM(Quantity) DESC
+--11.- Top 10 de productos vendidos al Mexico
+SELECT TOP 10 ProductName, SUM([Order Details].Quantity) AS can FROM Products
+INNER JOIN [Order Details] ON Products.ProductID=[Order Details].ProductID
+INNER JOIN Orders ON [Order Details].OrderID=Orders.OrderID
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+WHERE Customers.City = 'México D.F.' 
+GROUP BY ProductName ORDER BY SUM(Quantity) DESC
+--12.- Top 10 de productos con origen japones
+SELECT TOP 10 ProductName, SUM([Order Details].Quantity) AS can FROM Suppliers 
+inner join Products ON Suppliers.SupplierID=Products.SupplierID
+inner join [Order Details] ON Products.ProductID=[Order Details].ProductID
+WHERE Suppliers.Country ='Japan' 
+GROUP BY ProductName ORDER BY sum(Quantity) DESC
+--13.- Listado de productos vendidos a Uk que se provenientes de Japon
+SELECT ProductName FROM Products
+inner join Suppliers on Products.SupplierID=Suppliers.SupplierID
+inner join [Order Details] on Products.ProductID=[Order Details].ProductID
+inner join Orders on [Order Details].OrderID=Orders.OrderID
+inner join Customers on Orders.CustomerID=Customers.CustomerID
+WHERE Customers.Country='UK' and Suppliers.Country='Japan'
+--14.- Listado de clientes que inicien con la letra 'C'
+SELECT CompanyName FROM Customers WHERE CompanyName LIKE 'C%'
+--15.- Listado de clientes que inicien con la letra 'D' (con cursores, en consola)
+DECLARE @cliente AS NVARCHAR(50)
+DECLARE @miCursorE15 AS CURSOR
+SET @miCursorE15 = CURSOR FOR
+					SELECT CompanyName FROM Customers WHERE CompanyName LIKE 'D%'
+OPEN @miCursorE15
+FETCH NEXT FROM @miCursorE15 INTO @cliente
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	PRINT @cliente
+
+	FETCH NEXT FROM @miCursorE15 INTO @cliente
+
+END
+--16.- Listado de productos vendidos el anio 1996, sin duplicados (con cursores, en consola)
+DECLARE @producto AS NVARCHAR(50)
+DECLARE @fecha AS NVARCHAR(50)
+DECLARE @miCursorE16 AS CURSOR
+SET @miCursorE16 = CURSOR FOR
+					SELECT DISTINCT ProductName, OrderDate FROM Products INNER JOIN [Order Details] ON 
+Products.ProductID = [Order Details].ProductID INNER JOIN Orders
+ON [Order Details].OrderID = Orders.OrderID WHERE OrderDate >= '19960101' AND OrderDate <= '19961231'
+OPEN @miCursorE16
+FETCH NEXT FROM @miCursorE16 INTO @producto, @fecha
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	PRINT @producto
+	PRINT @fecha
+
+	FETCH NEXT FROM @miCursorE16 INTO @producto, @fecha
+
+END
+
+DECLARE @cnt2 AS NVARCHAR(50)
+DECLARE @miCursorsito2 AS CURSOR
+
+SET @miCursorsito2 = CURSOR FOR
+					SELECT DISTINCT ProductName
+					From Products inner join [Order Details] on
+					Products.ProductID=[Order Details].ProductID
+					inner join Orders on [Order Details].OrderID=Orders.OrderID
+					WHERE Orders.OrderDate BETWEEN '01-01-1996' and '31-12-1996'
+OPEN @miCursorsito2
+FETCH NEXT FROM @miCursorsito2 INTO @cnt2
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+
+	PRINT @cnt2
+	FETCH NEXT FROM @miCursorsito2 INTO @cnt2
+
+END
+--(Dudas)17.- Listado de productos vendidos, siempre y cuando el empleado sea de la region 'Western' (con cursores, en consola)
+DECLARE @producto AS NVARCHAR(50)
+DECLARE @miCursorE17 AS CURSOR
+SET @miCursorE17 = CURSOR FOR
+					SELECT ProductName FROM Products
+					INNER JOIN [Order Details] ON Products.ProductID=[Order Details].ProductID
+					INNER JOIN Orders ON [Order Details].OrderID = Orders.OrderID
+					INNER JOIN Employees ON orders.EmployeeID = Employees.EmployeeID
+					INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
+					INNER JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID
+					INNER JOIN Region ON Territories.RegionID =Region.RegionID
+					WHERE Region.RegionDescription = 'Western'
+OPEN @miCursorE17
+FETCH NEXT FROM @miCursorE17 INTO @producto
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	PRINT @producto
+
+	FETCH NEXT FROM @miCursorE17 INTO @producto
+
+END
+
+DECLARE @cnt AS NVARCHAR(50)
+DECLARE @miCursorsito AS CURSOR
+DECLARE @CONTADOR AS INT
+SET @CONTADOR=1
+
+SET @miCursorsito = CURSOR FOR
+					SELECT ProductName
+					From Products inner join [Order Details] on
+					Products.ProductID=[Order Details].ProductID
+					inner join Orders on [Order Details].OrderID=Orders.OrderID
+					inner join Employees on Orders.EmployeeID=Employees.EmployeeID
+					inner join EmployeeTerritories on Employees.EmployeeID=EmployeeTerritories.EmployeeID
+					inner join Territories on EmployeeTerritories.TerritoryID=Territories.TerritoryID
+					inner join Region on Territories.RegionID=Region.RegionID
+					WHERE Region.RegionDescription='Western'
+OPEN @miCursorsito
+FETCH NEXT FROM @miCursorsito INTO @cnt
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+
+	PRINT cast(@CONTADOR as nvarchar(1000)) + '--' + @cnt
+	FETCH NEXT FROM @miCursorsito INTO @cnt
+	SET @CONTADOR=@CONTADOR+1
+
+END
+--18.- Ordenes del anio 1996, vendias a Francia, provenientes de China, que no esten descontinuados, siempre y cuando el empleado
+--sea de 'Western' y hayan sido enviados por 'Speedy Express' (con cursores, tablas temporales, en consola)
+--19.- Crear procedimiento almacenado que ejecute el ejercicio 15 (tomar en cuenta parametros)
+EXECute stp_clientes_d
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_clientes_d
+(
+@companyName NVARCHAR(50)
+)
+AS
+BEGIN
+
+DECLARE @cliente AS NVARCHAR(50)
+DECLARE @miCursorE20 AS CURSOR
+SET @miCursorE20 = CURSOR FOR
+
+			SELECT [CompanyName]
+			  FROM [dbo].[Customers]
+			  WHERE CompanyName = @companyName AND CompanyName LIKE 'D%'
+			  OPEN @miCursorE20
+FETCH NEXT FROM @miCursorE20 INTO @cliente
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	PRINT @cliente
+
+	FETCH NEXT FROM @miCursorE20 INTO @cliente
+
+END
+
+END
+--20.- Crear procedimiento almacenado que ejecute el ejercicio 16 (tomar en cuenta parametros)
+--21.- Crear procedimiento almacenado que ejecute el ejercicio 17 (tomar en cuenta parametros)
+--22.- Crear procedimiento almacenado que ejecute el ejercicio 18 (tomar en cuenta parametros)
+
 {% endhighlight %}
