@@ -502,7 +502,7 @@ SET @miCursorE16 = CURSOR FOR
 	ON [Order Details].OrderID = Orders.OrderID WHERE OrderDate >= '19960101' AND OrderDate <= '19961231'
 						
 OPEN @miCursorE16
-FETCH NEXT FROM @miCursorE16 INTO @cnt
+FETCH NEXT FROM @miCursorE16 INTO @producto
 WHILE @@FETCH_STATUS = 0
 BEGIN
 
@@ -554,13 +554,77 @@ END
 ## Ejercicio 19
 
 {% highlight sql linenos %}
+--19.- Crear procedimiento almacenado que ejecute el ejercicio 15 (tomar en cuenta parametros)
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_e_19
+(
+@letra NVARCHAR(1)
+)
+AS
+BEGIN
 
+DECLARE @cliente AS NVARCHAR(50)
+DECLARE @miCursorE15 AS CURSOR
+SET @miCursorE15 = CURSOR FOR
+					SELECT CompanyName
+					FROM Customers
+					WHERE CompanyName LIKE @letra + '%'
+OPEN @miCursorE15
+FETCH NEXT FROM @miCursorE15 INTO @cliente
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	PRINT @cliente
+
+	FETCH NEXT FROM @miCursorE15 INTO @cliente
+
+END
+
+END
 {% endhighlight %}
 
 ## Ejercicio 20
 
 {% highlight sql linenos %}
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_e_20
+(
+@primerDia NVARCHAR(10),
+@ultimoDia NVARCHAR(10)
+)
+AS
+BEGIN
 
+DECLARE @producto AS NVARCHAR(50)
+DECLARE @miCursorE16 AS CURSOR
+DECLARE @i AS INT
+SET @i = 1
+
+SET @miCursorE16 = CURSOR FOR
+					SELECT DISTINCT ProductName FROM Products INNER JOIN [Order Details] ON 
+					Products.ProductID = [Order Details].ProductID INNER JOIN Orders
+					ON [Order Details].OrderID = Orders.OrderID WHERE OrderDate >= @primerDia AND OrderDate <= @ultimoDia
+
+OPEN @miCursorE16
+FETCH NEXT FROM @miCursorE16 INTO @producto
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+
+	PRINT CAST(@i AS NVARCHAR(100)) + '. ' + @producto
+	FETCH NEXT FROM @miCursorE16 INTO @producto
+	SET @i = @i + 1
+
+END
+
+END
+
+exec stp_e_20 '19960101','19961231'
+drop procedure stp_e_20
 {% endhighlight %}
 
 ## Ejercicio 21
