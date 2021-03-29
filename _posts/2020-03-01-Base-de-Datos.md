@@ -517,6 +517,7 @@ END
 ## Ejercicio 17
 
 {% highlight sql linenos %}
+--17.- Listado de productos vendidos, siempre y cuando el empleado sea de la region 'Western' (con cursores, en consola)
 DECLARE @producto AS NVARCHAR(50)
 DECLARE @miCursorE17 AS CURSOR
 DECLARE @i AS INT
