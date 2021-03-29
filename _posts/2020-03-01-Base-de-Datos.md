@@ -533,7 +533,7 @@ SET @miCursorE17 = CURSOR FOR
 					inner join Region on Territories.RegionID=Region.RegionID
 					WHERE Region.RegionDescription='Western'
 OPEN @miCursorE17
-FETCH NEXT FROM @miCursorE17 INTO @cnt
+FETCH NEXT FROM @miCursorE17 INTO @producto
 WHILE @@FETCH_STATUS = 0
 BEGIN
 
