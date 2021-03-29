@@ -662,8 +662,6 @@ drop procedure stp_e_20
 ## Ejercicio 21
 
 {% highlight sql linenos %}
-
-{% endhighlight %}
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 GO
@@ -704,6 +702,8 @@ END
 
 exec stp_e_21 'Western'
 drop procedure stp_e_21
+{% endhighlight %}
+
 ## Ejercicio 22
 
 {% highlight sql linenos %}
@@ -728,19 +728,19 @@ DECLARE @datos AS NVARCHAR(50)
 DECLARE @miCursorE18 AS CURSOR
 --SELECT * INTO #tordenes from Orders
 
-SELECT tr.OrderID INTO #tordenes
-					From Orders tr INNER JOIN Customers ON tr.CustomerID = Customers.CustomerID
-					INNER JOIN [Order Details] ON tr.OrderID = [Order Details].OrderID
-					INNER JOIN Products ON [Order Details].ProductID = Products.ProductID
-					INNER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID
-					INNER JOIN Employees ON tr.EmployeeID = Employees.EmployeeID
-					INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
-					INNER JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID
-					INNER JOIN Region ON Territories.RegionID = Region.RegionID
-					INNER JOIN Shippers ON tr.ShipVia=Shippers.ShipperID
-					WHERE tr.OrderDate BETWEEN @fechaInicio AND @fechaFinal AND Customers.Country = @lugarVenta
-					AND Suppliers.Country = @lugarOrigen AND Products.Discontinued = @descontinuo AND Region.RegionDescription = @regionEmpleado
-					AND Shippers.ShipperID = @shipper
+	SELECT tr.OrderID INTO #tordenes
+	From Orders tr INNER JOIN Customers ON tr.CustomerID = Customers.CustomerID
+	INNER JOIN [Order Details] ON tr.OrderID = [Order Details].OrderID
+	INNER JOIN Products ON [Order Details].ProductID = Products.ProductID
+	INNER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID
+	INNER JOIN Employees ON tr.EmployeeID = Employees.EmployeeID
+	INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
+	INNER JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID
+	INNER JOIN Region ON Territories.RegionID = Region.RegionID
+	INNER JOIN Shippers ON tr.ShipVia=Shippers.ShipperID
+	WHERE tr.OrderDate BETWEEN @fechaInicio AND @fechaFinal AND Customers.Country = @lugarVenta
+	AND Suppliers.Country = @lugarOrigen AND Products.Discontinued = @descontinuo AND Region.RegionDescription = @regionEmpleado
+	AND Shippers.ShipperID = @shipper
 					
 --drop table #tordenes
 --select * from #tordenes
