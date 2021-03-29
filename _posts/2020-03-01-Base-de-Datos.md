@@ -548,7 +548,39 @@ END
 ## Ejercicio 18
 
 {% highlight sql linenos %}
+--18.- Ordenes del anio 1996, vendias a Francia, provenientes de China, que no esten descontinuados, siempre y cuando el empleado
+--sea de 'Western' y hayan sido enviados por 'Speedy Express' (con cursores, tablas temporales, en consola)
+DECLARE @datos AS NVARCHAR(50)
+DECLARE @miCursorE18 AS CURSOR
+--SELECT * INTO #tordenes from Orders
 
+SELECT tr.OrderID INTO #tordenes
+					From Orders tr INNER JOIN Customers ON tr.CustomerID = Customers.CustomerID
+					INNER JOIN [Order Details] ON tr.OrderID = [Order Details].OrderID
+					INNER JOIN Products ON [Order Details].ProductID = Products.ProductID
+					INNER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID
+					INNER JOIN Employees ON tr.EmployeeID = Employees.EmployeeID
+					INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
+					INNER JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID
+					INNER JOIN Region ON Territories.RegionID = Region.RegionID
+					INNER JOIN Shippers ON tr.ShipVia=Shippers.ShipperID
+					WHERE tr.OrderDate BETWEEN '01-01-1996' AND '31-12-1996' AND Customers.Country = 'France'
+					AND Suppliers.Country = 'China' AND Products.Discontinued = 0 AND Region.RegionDescription = 'Western'
+					AND Shippers.ShipperID = 1
+					
+--drop table #tordenes
+--select * from #tordenes
+SET @miCursorE18 = CURSOR FOR
+					SELECT * FROM #tordenes
+OPEN @miCursorE18
+FETCH NEXT FROM @miCursorE18 INTO @datos
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	PRINT @datos
+	FETCH NEXT FROM @miCursorE18 INTO @datos
+
+END
 {% endhighlight %}
 
 ## Ejercicio 19
@@ -675,5 +707,57 @@ drop procedure stp_e_21
 ## Ejercicio 22
 
 {% highlight sql linenos %}
+--22.- Crear procedimiento almacenado que ejecute el ejercicio 18 (tomar en cuenta parametros)
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_e_22
+(
+@fechaInicio NVARCHAR(50),
+@fechaFinal NVARCHAR(50),
+@lugarVenta NVARCHAR(50),
+@lugarOrigen NVARCHAR(50),
+@descontinuo int,
+@regionEmpleado NVARCHAR(50),
+@shipper int
+)
+AS
+BEGIN
 
+DECLARE @datos AS NVARCHAR(50)
+DECLARE @miCursorE18 AS CURSOR
+--SELECT * INTO #tordenes from Orders
+
+SELECT tr.OrderID INTO #tordenes
+					From Orders tr INNER JOIN Customers ON tr.CustomerID = Customers.CustomerID
+					INNER JOIN [Order Details] ON tr.OrderID = [Order Details].OrderID
+					INNER JOIN Products ON [Order Details].ProductID = Products.ProductID
+					INNER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID
+					INNER JOIN Employees ON tr.EmployeeID = Employees.EmployeeID
+					INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
+					INNER JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID
+					INNER JOIN Region ON Territories.RegionID = Region.RegionID
+					INNER JOIN Shippers ON tr.ShipVia=Shippers.ShipperID
+					WHERE tr.OrderDate BETWEEN @fechaInicio AND @fechaFinal AND Customers.Country = @lugarVenta
+					AND Suppliers.Country = @lugarOrigen AND Products.Discontinued = @descontinuo AND Region.RegionDescription = @regionEmpleado
+					AND Shippers.ShipperID = @shipper
+					
+--drop table #tordenes
+--select * from #tordenes
+SET @miCursorE18 = CURSOR FOR
+					SELECT * FROM #tordenes
+OPEN @miCursorE18
+FETCH NEXT FROM @miCursorE18 INTO @datos
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	PRINT @datos
+	FETCH NEXT FROM @miCursorE18 INTO @datos
+
+END
+
+END
+
+exec stp_e_22 '01-01-1996','31-12-1996','France','China',0,'Western',1
+drop procedure stp_ejercicio_18
 {% endhighlight %}
