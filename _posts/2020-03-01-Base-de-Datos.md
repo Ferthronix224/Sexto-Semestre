@@ -524,15 +524,14 @@ DECLARE @i AS INT
 SET @i = 1
 
 SET @miCursorE17 = CURSOR FOR
-					SELECT ProductName
-					From Products inner join [Order Details] on
-					Products.ProductID=[Order Details].ProductID
-					inner join Orders on [Order Details].OrderID=Orders.OrderID
-					inner join Employees on Orders.EmployeeID=Employees.EmployeeID
-					inner join EmployeeTerritories on Employees.EmployeeID=EmployeeTerritories.EmployeeID
-					inner join Territories on EmployeeTerritories.TerritoryID=Territories.TerritoryID
-					inner join Region on Territories.RegionID=Region.RegionID
-					WHERE Region.RegionDescription='Western'
+	SELECT ProductName FROM Products
+	INNER JOIN [Order Details] ON Products.ProductID=[Order Details].ProductID
+	INNER JOIN Orders ON [Order Details].OrderID = Orders.OrderID
+	INNER JOIN Employees ON orders.EmployeeID = Employees.EmployeeID
+	INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
+	INNER JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID
+	INNER JOIN Region ON Territories.RegionID =Region.RegionID
+	WHERE Region.RegionDescription = 'Western'
 OPEN @miCursorE17
 FETCH NEXT FROM @miCursorE17 INTO @producto
 WHILE @@FETCH_STATUS = 0
@@ -569,9 +568,9 @@ BEGIN
 DECLARE @cliente AS NVARCHAR(50)
 DECLARE @miCursorE15 AS CURSOR
 SET @miCursorE15 = CURSOR FOR
-					SELECT CompanyName
-					FROM Customers
-					WHERE CompanyName LIKE @letra + '%'
+	SELECT CompanyName
+	FROM Customers
+	WHERE CompanyName LIKE @letra + '%'
 OPEN @miCursorE15
 FETCH NEXT FROM @miCursorE15 INTO @cliente
 WHILE @@FETCH_STATUS = 0
@@ -606,9 +605,9 @@ DECLARE @i AS INT
 SET @i = 1
 
 SET @miCursorE16 = CURSOR FOR
-					SELECT DISTINCT ProductName FROM Products INNER JOIN [Order Details] ON 
-					Products.ProductID = [Order Details].ProductID INNER JOIN Orders
-					ON [Order Details].OrderID = Orders.OrderID WHERE OrderDate >= @primerDia AND OrderDate <= @ultimoDia
+	SELECT DISTINCT ProductName FROM Products INNER JOIN [Order Details] ON 
+	Products.ProductID = [Order Details].ProductID INNER JOIN Orders
+	ON [Order Details].OrderID = Orders.OrderID WHERE OrderDate >= @primerDia AND OrderDate <= @ultimoDia
 
 OPEN @miCursorE16
 FETCH NEXT FROM @miCursorE16 INTO @producto
@@ -633,7 +632,46 @@ drop procedure stp_e_20
 {% highlight sql linenos %}
 
 {% endhighlight %}
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE stp_e_21
+(
+@region NVARCHAR(50)
+)
+AS
+BEGIN
 
+DECLARE @producto AS NVARCHAR(50)
+DECLARE @miCursorE17 AS CURSOR
+DECLARE @i AS INT
+SET @i = 1
+
+SET @miCursorE17 = CURSOR FOR
+	SELECT ProductName FROM Products
+	INNER JOIN [Order Details] ON Products.ProductID=[Order Details].ProductID
+	INNER JOIN Orders ON [Order Details].OrderID = Orders.OrderID
+	INNER JOIN Employees ON orders.EmployeeID = Employees.EmployeeID
+	INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
+	INNER JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID
+	INNER JOIN Region ON Territories.RegionID =Region.RegionID
+	WHERE Region.RegionDescription = @region
+OPEN @miCursorE17
+FETCH NEXT FROM @miCursorE17 INTO @producto
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+
+	PRINT CAST(@i AS NVARCHAR(1000)) + '. ' + @producto
+	FETCH NEXT FROM @miCursorE17 INTO @producto
+	SET @i = @i + 1
+
+END
+
+END
+
+exec stp_e_21 'Western'
+drop procedure stp_e_21
 ## Ejercicio 22
 
 {% highlight sql linenos %}
