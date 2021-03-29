@@ -490,13 +490,59 @@ END
 ## Ejercicio 16
 
 {% highlight sql linenos %}
+--16.- Listado de productos vendidos el anio 1996, sin duplicados (con cursores, en consola)
+DECLARE @producto AS NVARCHAR(50)
+DECLARE @miCursorE16 AS CURSOR
+DECLARE @i AS INT
+SET @i = 1
 
+SET @miCursorE16 = CURSOR FOR
+					SELECT DISTINCT ProductName FROM Products INNER JOIN [Order Details] ON 
+					Products.ProductID = [Order Details].ProductID INNER JOIN Orders
+					ON [Order Details].OrderID = Orders.OrderID WHERE OrderDate >= '19960101' AND OrderDate <= '19961231'
+
+OPEN @miCursorE16
+FETCH NEXT FROM @miCursorE16 INTO @cnt
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+
+	PRINT CAST(@i AS NVARCHAR(100)) + '. ' + @producto
+	FETCH NEXT FROM @miCursorE16 INTO @producto
+	SET @i = @i + 1
+
+END
 {% endhighlight %}
 
 ## Ejercicio 17
 
 {% highlight sql linenos %}
+DECLARE @producto AS NVARCHAR(50)
+DECLARE @miCursorE17 AS CURSOR
+DECLARE @i AS INT
+SET @i = 1
 
+SET @miCursorE17 = CURSOR FOR
+					SELECT ProductName
+					From Products inner join [Order Details] on
+					Products.ProductID=[Order Details].ProductID
+					inner join Orders on [Order Details].OrderID=Orders.OrderID
+					inner join Employees on Orders.EmployeeID=Employees.EmployeeID
+					inner join EmployeeTerritories on Employees.EmployeeID=EmployeeTerritories.EmployeeID
+					inner join Territories on EmployeeTerritories.TerritoryID=Territories.TerritoryID
+					inner join Region on Territories.RegionID=Region.RegionID
+					WHERE Region.RegionDescription='Western'
+OPEN @miCursorE17
+FETCH NEXT FROM @miCursorE17 INTO @cnt
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+
+	PRINT CAST(@i AS NVARCHAR(1000)) + '. ' + @producto
+	FETCH NEXT FROM @miCursorE17 INTO @producto
+	SET @i = @i + 1
+
+END
 {% endhighlight %}
 
 ## Ejercicio 18
