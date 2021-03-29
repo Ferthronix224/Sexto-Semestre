@@ -497,10 +497,10 @@ DECLARE @i AS INT
 SET @i = 1
 
 SET @miCursorE16 = CURSOR FOR
-					SELECT DISTINCT ProductName FROM Products INNER JOIN [Order Details] ON 
-					Products.ProductID = [Order Details].ProductID INNER JOIN Orders
-					ON [Order Details].OrderID = Orders.OrderID WHERE OrderDate >= '19960101' AND OrderDate <= '19961231'
-
+	SELECT DISTINCT ProductName FROM Products INNER JOIN [Order Details] ON 
+	Products.ProductID = [Order Details].ProductID INNER JOIN Orders
+	ON [Order Details].OrderID = Orders.OrderID WHERE OrderDate >= '19960101' AND OrderDate <= '19961231'
+						
 OPEN @miCursorE16
 FETCH NEXT FROM @miCursorE16 INTO @cnt
 WHILE @@FETCH_STATUS = 0
